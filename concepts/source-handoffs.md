@@ -12,9 +12,22 @@ They answer the source side of the handoff question, not the execution side: wha
 
 ## Visual Model
 
-This spec-level model shows the current Go and Rust source-handoff reference lanes side by side. The pickle jars represent inspectable local source packages: open them, review the contents, then integrate locally through the language's normal project mechanisms.
+This spec-level model shows the current Go and Rust source-handoff reference lanes side by side.
 
-![Reviewable Go and Rust Source Handoffs](../docs/assets/reviewable-source-handoffs.png)
+```mermaid
+flowchart LR
+    subgraph Go["Go source handoff"]
+        A[Local Go module] --> B[gopickle build]
+        B --> C[file:// GOPROXY folder]
+        C --> D[Consumer go.mod uses normal module resolution]
+    end
+
+    subgraph Rust["Rust source handoff"]
+        E[Local Rust crate] --> F[rustpickle build]
+        F --> G[Cargo directory source]
+        G --> H[Consumer Cargo.toml uses source or patch config]
+    end
+```
 
 ## Reference Implementations
 
