@@ -8,6 +8,10 @@ Execution handoffs are about pre-execution reviewability. They make it easier to
 
 > Do not execute what you cannot review.
 
+## Visual Model
+
+![Reviewable Execution Handoffs: source-preserving meal kit](../docs/assets/reviewable-execution-handoffs.png)
+
 ## Reference Implementations
 
 | Language | Tool | Spec |
@@ -40,6 +44,12 @@ The initial `*shbuild` tools use a source-preserving runner model:
 6. execute the resulting binary with normal arguments
 
 The point is not merely to generate a shell script. The point is to make the executable handoff carry a reviewable source and build story.
+
+## Mental Model
+
+An execution handoff should feel less like receiving a mystery binary and more like receiving a reviewable meal kit: inspect the ingredients, check the recipe, verify the seal, then cook locally.
+
+In `goshbuild` and `rushbuild`, the ingredients are the source payload, the recipe is the runner/build workflow, the seal is the checksum, and cooking locally means building with the local Go or Rust toolchain before execution.
 
 ## Non-Goals
 

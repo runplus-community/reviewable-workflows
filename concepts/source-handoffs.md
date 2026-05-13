@@ -8,6 +8,10 @@ Source handoffs are about pre-consumption reviewability. They make it easier to 
 
 > Do not bundle what you cannot inspect.
 
+## Visual Model
+
+![Reviewable Source Handoffs: local source handoff shelf](../docs/assets/reviewable-source-handoffs.png)
+
 ## Reference Implementations
 
 | Language | Tool | Spec |
@@ -37,6 +41,12 @@ Examples:
 - Rust: Cargo directory source or `[patch.crates-io]`
 
 Language-native handoffs let consumer projects keep familiar dependency behavior while making the local source flow easier to inspect.
+
+## Mental Model
+
+A source handoff is like putting a local library on a labeled shelf: the contents are visible, the version is marked, and another project can borrow it through the language's normal checkout process.
+
+`gopickle` and `rustpickle` are the labeled shelf for source. They make the package easier to inspect before another project consumes it.
 
 ## Non-Goals
 

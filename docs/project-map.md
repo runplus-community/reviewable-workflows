@@ -58,3 +58,9 @@ Reference implementations:
 The four tool repos own implementation code, runnable examples, generated artifacts, test harnesses, and language-specific behavior.
 
 Specs should link to reference implementations. Reference implementations should link back to their specs.
+
+## Short Mental Model
+
+`gopickle` and `rustpickle` are the labeled shelf for source: inspect the package before another project consumes it.
+
+`goshbuild` and `rushbuild` are the reviewable meal kit for execution: inspect the ingredients, recipe, and seal before building and running locally.

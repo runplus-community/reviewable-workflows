@@ -9,6 +9,10 @@ They do not argue that a reviewable-handoffs spec would have stopped an incident
 - [Axios 2026 npm Compromise](axios-2026-npm-compromise.md)
 - [Self-Critique: Axios 2026 as a Reviewable Workflow Handoffs Case Study](axios-2026-self-critique.md)
 
+## Spec Sketches
+
+- [npm Reviewable Handoffs After Axios 2026](axios-2026-npm-spec-sketch.md)
+
 ## Review Standard
 
 Each case study should separate:

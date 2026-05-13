@@ -6,6 +6,8 @@ This note critiques the thesis use of the Axios 2026 npm compromise.
 
 It is intentionally skeptical. The goal is to keep the case study useful without overstating what Reviewable Workflow Handoffs can do.
 
+Axios 2026 is the segue from Go/Rust tools to the broader spec: reviewability matters wherever source, package metadata, or execution behavior crosses a trust boundary.
+
 ## Thesis Being Tested
 
 > Developer workflow handoffs should be visible, language-native where possible, version-controlled, and reviewable before they run or before another project consumes them.
@@ -52,7 +54,7 @@ Execution handoff:
 
 The current reference implementations are Go and Rust, but Axios is npm.
 
-That helps prove the thesis is not language-specific. Go/Rust tools are reference implementations; the spec category is broader.
+That supports the thesis that the category is not language-specific. Go/Rust tools are reference implementations; the spec category is broader.
 
 ### 5. It Creates A Concrete Adoption Argument
 
@@ -161,7 +163,7 @@ Do not say:
 
 The useful spec requirement is not "review everything manually."
 
-The useful requirement is:
+A useful requirement could be:
 
 > Expose high-risk handoff changes before execution or consumption, and make them available to reviewers, package managers, registries, and CI policy.
 
