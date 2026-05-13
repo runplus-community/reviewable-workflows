@@ -29,9 +29,9 @@ Reviewable build workflows answer:
 | `GOSHB-001` | [`goshbuild`](https://github.com/runplus-community/goshbuild) | Reviewable Go build workflows |
 | `RUSHB-001` | [`rushbuild`](https://github.com/runplus-community/rushbuild) | Reviewable Rust build workflows |
 
-### Reviewable Packaging and Extraction Workflows
+### Reviewable Local Source and Packaging Workflows
 
-Reviewable packaging and extraction workflows answer:
+Reviewable local source and packaging workflows answer:
 
 > What files, source, or project materials are included?
 
@@ -39,8 +39,8 @@ Reviewable packaging and extraction workflows answer:
 
 | Spec ID | Reference implementation | Purpose |
 | --- | --- | --- |
-| `GOPICKLE-001` | [`gopickle`](https://github.com/runplus-community/gopickle) | Reviewable Go project packaging and extraction workflows |
-| `RUSTPICKLE-001` | [`rustpickle`](https://github.com/runplus-community/rustpickle) | Reviewable Rust project packaging and extraction workflows |
+| `GOPICKLE-001` | [`gopickle`](https://github.com/runplus-community/gopickle) | Reviewable Go local source handoff workflows |
+| `RUSTPICKLE-001` | [`rustpickle`](https://github.com/runplus-community/rustpickle) | Reviewable Rust local source handoff workflows |
 
 ## Repo Boundary
 
@@ -62,11 +62,15 @@ Runnable code and project examples belong in:
 - [`gopickle`](https://github.com/runplus-community/gopickle)
 - [`rustpickle`](https://github.com/runplus-community/rustpickle)
 
+For the deeper project thesis, see [docs/thesis-notes.md](docs/thesis-notes.md).
+
 ## Security Note
 
 Reviewable Workflows does not replace dependency scanning, code review, package signing, sandboxing, CI security, or runtime policy enforcement.
 
 It helps reduce hidden execution paths and improves workflow auditability by making workflow behavior visible, versioned, and reviewable before execution.
+
+For packaging and local source handoff, it helps make included source and generated consumer configuration easier to inspect before reuse.
 
 ## License
 
