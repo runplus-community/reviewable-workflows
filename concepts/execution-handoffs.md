@@ -10,6 +10,8 @@ Execution handoffs are about pre-execution reviewability. They make it easier to
 
 ## Visual Model
 
+This spec-level model shows the current Go and Rust execution-handoff reference lanes side by side. The meal kit represents a source-preserving runner: inspect the ingredients, verify the marker, build locally, then run with intent.
+
 ![Reviewable Execution Handoffs: source-preserving meal kit](../docs/assets/reviewable-execution-handoffs.png)
 
 ## Reference Implementations

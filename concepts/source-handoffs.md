@@ -4,13 +4,17 @@ A source handoff answers:
 
 > What files or source content are being handed to another tool, project, reviewer, or AI agent?
 
-Source handoffs are about pre-consumption reviewability. They make it easier to inspect source content, generated local repository artifacts, and consumer configuration before another project uses them.
+Source handoffs are about pre-consumption reviewability. They make it easier to inspect source content, generated local repository artifacts, and consumer configuration before another project, tool, reviewer, or AI agent uses them.
+
+They answer the source side of the handoff question, not the execution side: what will be included, what will be excluded, how it will be identified, and how the receiver will consume it.
 
 > Do not bundle what you cannot inspect.
 
 ## Visual Model
 
-![Reviewable Source Handoffs: local source handoff shelf](../docs/assets/reviewable-source-handoffs.png)
+This spec-level model shows the current Go and Rust source-handoff reference lanes side by side. The pickle jars represent inspectable local source packages: open them, review the contents, then integrate locally through the language's normal project mechanisms.
+
+![Reviewable Go and Rust Source Handoffs](../docs/assets/reviewable-source-handoffs.png)
 
 ## Reference Implementations
 
@@ -44,9 +48,9 @@ Language-native handoffs let consumer projects keep familiar dependency behavior
 
 ## Mental Model
 
-A source handoff is like putting a local library on a labeled shelf: the contents are visible, the version is marked, and another project can borrow it through the language's normal checkout process.
+A source handoff is like putting local library code into transparent, labeled pickle jars on a shelf: the contents are visible, the identity is marked, and another project can inspect the jar before consuming it.
 
-`gopickle` and `rustpickle` are the labeled shelf for source. They make the package easier to inspect before another project consumes it.
+`gopickle` and `rustpickle` are the source-handoff reference tools for this model. They make source packages easier to inspect before another project consumes them through Go or Rust-native configuration.
 
 ## Non-Goals
 
