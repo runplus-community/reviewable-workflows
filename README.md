@@ -5,6 +5,7 @@ Reviewable source and execution handoffs for modern developer workflows.
 Developer workflow handoffs should be visible, language-native where possible, version-controlled, and reviewable before they run or before another project consumes them.
 
 > Do not execute what you cannot review.
+> Do not bundle what you cannot inspect.
 
 Reviewable Workflow Handoffs defines specs and reference tools for making developer handoffs inspectable before they cross a trust boundary.
 
@@ -12,6 +13,16 @@ Reviewable Workflow Handoffs defines specs and reference tools for making develo
 | --- | --- | --- |
 | Source handoff | [`gopickle`](https://github.com/runplus-community/gopickle) | [`rustpickle`](https://github.com/runplus-community/rustpickle) |
 | Execution handoff | [`goshbuild`](https://github.com/runplus-community/goshbuild) | [`rushbuild`](https://github.com/runplus-community/rushbuild) |
+
+```mermaid
+flowchart TD
+    A[Reviewable Workflow Handoffs] --> B[Reviewable Source Handoffs]
+    A --> C[Reviewable Execution Handoffs]
+    B --> D[gopickle]
+    B --> E[rustpickle]
+    C --> F[goshbuild]
+    C --> G[rushbuild]
+```
 
 ## Before / After
 
