@@ -1,16 +1,17 @@
 # Contributing
 
-Thanks for contributing to Reviewable Workflows.
+Thanks for contributing to Reviewable Workflow Handoffs.
 
-This repo is the spec and documentation layer for `runplus-community` reviewable workflow projects.
+This repo is the spec and documentation layer for `runplus-community` Reviewable Workflow Handoffs.
 
 ## Repo Boundary
 
 Use this repo for:
 
 - specs
-- principles
+- concepts
 - threat model notes
+- comparisons
 - cross-project documentation
 - links to reference implementations
 

@@ -1,23 +1,23 @@
 # Reference Implementations
 
-Reviewable Workflows is the spec layer. The supporting repos are reference implementations.
+Reviewable Workflows is the spec layer. The supporting repos are reference implementations of Reviewable Workflow Handoffs.
+
+For the complete 4 + 1 repo map, see [Project Map](project-map.md).
 
 ```text
-reviewable-workflows = specs, principles, threat model, shared docs
-goshbuild            = Go build reference implementation
-rushbuild            = Rust build reference implementation
-gopickle             = Go local source handoff reference implementation
-rustpickle           = Rust local source handoff reference implementation
+                         Go                 Rust
+Source Handoff       gopickle           rustpickle
+Execution Handoff    goshbuild          rushbuild
 ```
 
 ## Current References
 
-| Repo | Spec | Role |
+| Repo | Spec | Handoff type |
 | --- | --- | --- |
-| [`goshbuild`](https://github.com/runplus-community/goshbuild) | `GOSHB-001` | Reviewable Go build workflows |
-| [`rushbuild`](https://github.com/runplus-community/rushbuild) | `RUSHB-001` | Reviewable Rust build workflows |
-| [`gopickle`](https://github.com/runplus-community/gopickle) | `GOPICKLE-001` | Reviewable Go local source handoff workflows |
-| [`rustpickle`](https://github.com/runplus-community/rustpickle) | `RUSTPICKLE-001` | Reviewable Rust local source handoff workflows |
+| [`gopickle`](https://github.com/runplus-community/gopickle) | [`GOPICKLE-001`](../specs/source-handoffs/gopickle.md) | Reviewable Go source handoff |
+| [`rustpickle`](https://github.com/runplus-community/rustpickle) | [`RUSTPICKLE-001`](../specs/source-handoffs/rustpickle.md) | Reviewable Rust source handoff |
+| [`goshbuild`](https://github.com/runplus-community/goshbuild) | [`GOSHB-001`](../specs/execution-handoffs/goshbuild.md) | Reviewable Go execution handoff |
+| [`rushbuild`](https://github.com/runplus-community/rushbuild) | [`RUSHB-001`](../specs/execution-handoffs/rushbuild.md) | Reviewable Rust execution handoff |
 
 ## Boundary
 
@@ -28,9 +28,11 @@ Runnable examples, demo apps, test harnesses, generated artifacts, and language-
 This repo may include:
 
 - spec text
+- concepts
 - diagrams
 - terminology
 - threat model notes
+- comparisons
 - cross-project documentation
 - links to examples in supporting repos
 
@@ -38,8 +40,8 @@ This repo may include:
 
 The initial reference tools show two distinct workflow families:
 
-- `goshbuild` and `rushbuild` make execution handoff reviewable by preserving source inside a runner, verifying the payload, rebuilding locally, and caching by source and toolchain identity.
-- `gopickle` and `rustpickle` make local source handoff reviewable by using language-native local repository mechanisms: file-backed `GOPROXY` for Go and Cargo directory or patch configuration for Rust.
+- `gopickle` and `rustpickle` make source handoffs reviewable by using language-native local repository mechanisms: file-backed `GOPROXY` for Go and Cargo directory or patch configuration for Rust.
+- `goshbuild` and `rushbuild` make execution handoffs reviewable by preserving source inside a runner, verifying the payload, rebuilding locally, and caching by source and toolchain identity.
 
 ## Linking Rule
 

@@ -1,76 +1,62 @@
-# Reviewable Workflows
+# Reviewable Workflow Handoffs
 
-Open workflow specs from `runplus-community`.
-
-Developer workflows should be explicit, version-controlled, and reviewable before execution.
+Developer workflow handoffs should be visible, language-native where possible, version-controlled, and reviewable before they run or before another project consumes them.
 
 > Do not execute what you cannot review.
 
-Reviewable Workflows, also referred to as `rw3`, is the spec-level home for reviewable developer workflow standards. This repo is for specs, principles, threat model, and shared documentation. Reference implementation code lives in the supporting repos.
+Reviewable Workflows defines specs and reference tools for making developer handoffs inspectable before they cross a trust boundary.
 
-## What This Repo Defines
-
-- what a reviewable workflow is
-- why workflow reviewability matters
-- how workflow specs are named and versioned
-- how reference implementations connect to specs
-- what security claims and non-goals apply
-
-## Initial Spec Families
-
-### Reviewable Build Workflows
-
-Reviewable build workflows answer:
-
-> What commands will run?
-
-| Spec ID | Reference implementation | Purpose |
+| Handoff type | Go | Rust |
 | --- | --- | --- |
-| `GOSHB-001` | [`goshbuild`](https://github.com/runplus-community/goshbuild) | Reviewable Go build workflows |
-| `RUSHB-001` | [`rushbuild`](https://github.com/runplus-community/rushbuild) | Reviewable Rust build workflows |
+| Source handoff | [`gopickle`](https://github.com/runplus-community/gopickle) | [`rustpickle`](https://github.com/runplus-community/rustpickle) |
+| Execution handoff | [`goshbuild`](https://github.com/runplus-community/goshbuild) | [`rushbuild`](https://github.com/runplus-community/rushbuild) |
 
-### Reviewable Local Source and Packaging Workflows
+## Two Handoff Families
 
-Reviewable local source and packaging workflows answer:
+### Reviewable Source Handoffs
 
-> What files, source, or project materials are included?
+Source handoffs make project files and source content visible before another project, tool, reviewer, or AI agent consumes them.
 
 > Do not bundle what you cannot inspect.
 
-| Spec ID | Reference implementation | Purpose |
-| --- | --- | --- |
-| `GOPICKLE-001` | [`gopickle`](https://github.com/runplus-community/gopickle) | Reviewable Go local source handoff workflows |
-| `RUSTPICKLE-001` | [`rustpickle`](https://github.com/runplus-community/rustpickle) | Reviewable Rust local source handoff workflows |
+Specs:
+
+- [`GOPICKLE-001`](specs/source-handoffs/gopickle.md): Reviewable Go source handoffs
+- [`RUSTPICKLE-001`](specs/source-handoffs/rustpickle.md): Reviewable Rust source handoffs
+
+### Reviewable Execution Handoffs
+
+Execution handoffs make commands and workflow behavior visible before they run locally or in CI.
+
+> Do not execute what you cannot review.
+
+Specs:
+
+- [`GOSHB-001`](specs/execution-handoffs/goshbuild.md): Reviewable Go execution handoffs
+- [`RUSHB-001`](specs/execution-handoffs/rushbuild.md): Reviewable Rust execution handoffs
+
+## Concepts
+
+- [Reviewable Workflow Handoffs](concepts/reviewable-workflow-handoffs.md)
+- [Reviewable Source Handoffs](concepts/source-handoffs.md)
+- [Reviewable Execution Handoffs](concepts/execution-handoffs.md)
+- [Threat Model](concepts/threat-model.md)
+- [Credible Claims](concepts/credible-claims.md)
+- [Project Map](docs/project-map.md)
 
 ## Repo Boundary
 
-This repo should stay documentation-first:
+This repo is the spec and thesis layer. Runnable implementation code, demo apps, generated runners, smoke tests, and language-specific test harnesses belong in the supporting tool repos.
 
-```text
-reviewable-workflows/
-  specs/
-  principles/
-  docs/
-  SECURITY.md
-  CONTRIBUTING.md
-```
+This repo may include specs, concepts, comparisons, launch docs, diagrams, and links to implementation evidence.
 
-Runnable code and project examples belong in:
+## Security Position
 
-- [`goshbuild`](https://github.com/runplus-community/goshbuild)
-- [`rushbuild`](https://github.com/runplus-community/rushbuild)
-- [`gopickle`](https://github.com/runplus-community/gopickle)
-- [`rustpickle`](https://github.com/runplus-community/rustpickle)
+Reviewable Workflow Handoffs does not replace dependency scanning, code review, package signing, sandboxing, CI security, SLSA, OpenSSF Scorecard, Sigstore, SBOMs, or runtime policy enforcement.
 
-For the deeper project thesis, see [docs/thesis-notes.md](docs/thesis-notes.md).
+It helps reduce hidden workflow behavior by making handoffs easier to inspect before execution or consumption.
 
-## Security Note
-
-Reviewable Workflows does not replace dependency scanning, code review, package signing, sandboxing, CI security, or runtime policy enforcement.
-
-It helps reduce hidden execution paths and improves workflow auditability by making workflow behavior visible, versioned, and reviewable before execution.
-
-For packaging and local source handoff, it helps make included source and generated consumer configuration easier to inspect before reuse.
+See [comparisons/slsa-openssf.md](comparisons/slsa-openssf.md) for how this project relates to adjacent supply-chain security practices.
 
 ## License
 
