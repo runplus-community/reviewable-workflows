@@ -1,15 +1,30 @@
 # Reviewable Workflow Handoffs
 
+Reviewable source and execution handoffs for modern developer workflows.
+
 Developer workflow handoffs should be visible, language-native where possible, version-controlled, and reviewable before they run or before another project consumes them.
 
 > Do not execute what you cannot review.
 
-Reviewable Workflows defines specs and reference tools for making developer handoffs inspectable before they cross a trust boundary.
+Reviewable Workflow Handoffs defines specs and reference tools for making developer handoffs inspectable before they cross a trust boundary.
 
 | Handoff type | Go | Rust |
 | --- | --- | --- |
 | Source handoff | [`gopickle`](https://github.com/runplus-community/gopickle) | [`rustpickle`](https://github.com/runplus-community/rustpickle) |
 | Execution handoff | [`goshbuild`](https://github.com/runplus-community/goshbuild) | [`rushbuild`](https://github.com/runplus-community/rushbuild) |
+
+## Before / After
+
+Before:
+
+- source, dependency state, and build behavior are often scattered across README steps, local scripts, CI config, and tribal knowledge
+- reviewers may not have one clear handoff artifact to inspect before another context consumes or runs it
+
+After:
+
+- source handoffs answer what files or dependency content another project will consume
+- execution handoffs answer what commands, scripts, or runners will execute
+- handoff changes can be reviewed in pull requests like other project changes
 
 ## Two Handoff Families
 
@@ -40,9 +55,23 @@ Specs:
 - [Reviewable Workflow Handoffs](concepts/reviewable-workflow-handoffs.md)
 - [Reviewable Source Handoffs](concepts/source-handoffs.md)
 - [Reviewable Execution Handoffs](concepts/execution-handoffs.md)
+- [Glossary](concepts/glossary.md)
+- [What This Is Not](concepts/what-this-is-not.md)
 - [Threat Model](concepts/threat-model.md)
 - [Credible Claims](concepts/credible-claims.md)
 - [Project Map](docs/project-map.md)
+
+## Principles
+
+- [Principles index](principles/README.md)
+- [Do Not Execute What You Cannot Review](principles/do-not-execute-what-you-cannot-review.md)
+- [Do Not Bundle What You Cannot Inspect](principles/do-not-bundle-what-you-cannot-inspect.md)
+- [Prefer Language-Native Handoffs](principles/prefer-language-native-handoffs.md)
+
+## Case Studies
+
+- [Case studies index](case-studies/README.md)
+- [Axios 2026 npm Compromise](case-studies/axios-2026-npm-compromise.md)
 
 ## Repo Boundary
 
