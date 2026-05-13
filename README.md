@@ -41,7 +41,7 @@ After:
 
 ### Reviewable Source Handoffs
 
-Source handoffs make project files and source content visible before another project, tool, reviewer, or AI agent consumes them.
+Source handoffs make project files and dependency content visible before another project, team, reviewer, or tool consumes them.
 
 > Do not bundle what you cannot inspect.
 

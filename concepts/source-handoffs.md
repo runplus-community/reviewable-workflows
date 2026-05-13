@@ -2,9 +2,9 @@
 
 A source handoff answers:
 
-> What files or source content are being handed to another tool, project, reviewer, or AI agent?
+> What source or dependency content is being handed to another project, team, reviewer, or tool?
 
-Source handoffs are about pre-consumption reviewability. They make it easier to inspect source content, generated local repository artifacts, and consumer configuration before another project, tool, reviewer, or AI agent uses them.
+Source handoffs are about pre-consumption reviewability. They make it easier to inspect source content, generated local repository artifacts, and consumer configuration before another project, team, reviewer, or tool uses them.
 
 They answer the source side of the handoff question, not the execution side: what will be included, what will be excluded, how it will be identified, and how the receiver will consume it.
 
@@ -45,6 +45,10 @@ Examples:
 - Rust: Cargo directory source or `[patch.crates-io]`
 
 Language-native handoffs let consumer projects keep familiar dependency behavior while making the local source flow easier to inspect.
+
+For Go, this means treating `GOPROXY` as the module distribution experience: the consumer keeps normal `go.mod` requirements and imports, while the handoff controls where the module artifacts come from.
+
+The `*pickle` tools are reference implementations of this source-handoff idea. They are not generic export tools; they make local library distribution across projects and teams more explicit by using the language's own dependency mechanisms.
 
 ## Mental Model
 

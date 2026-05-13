@@ -16,6 +16,14 @@ The goal is to make local Rust crate reuse visible, versioned, and reviewable be
 
 > Do not bundle what you cannot inspect.
 
+## Cargo Source Context
+
+`rustpickle` is the Rust-side `*pickle` reference for local library distribution across projects and teams.
+
+It uses Cargo-native concepts rather than inventing a new package manager: directory sources, source replacement, and `[patch.crates-io]` configuration give a consumer crate a familiar dependency path while making the local crate handoff visible.
+
+The goal is the same as `gopickle`: keep local library reuse inspectable before another project consumes it.
+
 ## Reviewability Goal
 
 A reviewer should be able to inspect:

@@ -4,8 +4,8 @@ A developer workflow handoff is a moment when code, files, commands, generated a
 
 Examples:
 
-- a developer hands project source to another tool
-- a maintainer hands a source bundle to an AI coding agent
+- a team exposes local library source through `GOPROXY` or Cargo configuration
+- a developer hands project source to another review or packaging tool
 - a repo hands build commands to a local shell
 - a repo hands execution behavior to CI
 - a downstream project consumes local source or dependency content

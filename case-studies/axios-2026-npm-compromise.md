@@ -103,7 +103,7 @@ Review surface:
 
 A source handoff answers:
 
-> What files or source content are being handed to another tool, project, reviewer, or AI agent?
+> What source or package content is being handed to another project, package manager, reviewer, or tool?
 
 The Axios incident shows why package contents should be inspectable before consumption:
 

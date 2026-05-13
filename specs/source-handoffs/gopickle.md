@@ -16,6 +16,18 @@ The goal is to make local Go module reuse visible, versioned, and reviewable bef
 
 > Do not bundle what you cannot inspect.
 
+## GOPROXY Context
+
+`GOPROXY` is the Go-native module distribution path, not just an environment variable.
+
+Go 1.13 strengthened this path by allowing `GOPROXY` to use comma-separated fallback URLs, setting the default to `https://proxy.golang.org,direct`, and adding related controls such as `GOPRIVATE`, `GONOPROXY`, `GONOSUMDB`, and `GOSUMDB` for private modules and checksum behavior.
+
+`gopickle` uses that Go-native experience for local team workflows: create proxy-shaped module artifacts, make the included source and metadata inspectable, and give the consumer project a normal `GOPROXY` value.
+
+This is especially useful for controlled internal networks, where teams may want local or internal module distribution without committing large `vendor/` folders or depending on outgoing VCS/module fetches during builds.
+
+A `file://` `GOPROXY` can make a local folder behave like a module proxy, but the folder must follow the Go module proxy protocol. It is not enough to point `GOPROXY` at raw source. The handoff must include proxy-shaped artifacts such as `@v/list`, `.mod`, `.info`, and `.zip` files.
+
 ## Reviewability Goal
 
 A reviewer should be able to inspect:

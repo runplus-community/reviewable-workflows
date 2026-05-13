@@ -12,7 +12,7 @@ The first four reference implementations point to two related problems.
 
 ### 1. Source Handoff
 
-`gopickle` and `rustpickle` address the moment when one local project, tool, reviewer, or AI agent needs to consume source from another project.
+`gopickle` and `rustpickle` address the moment when one project or team needs to expose local library source to another project through language-native package or dependency mechanisms.
 
 Traditional handoffs often use:
 
@@ -37,6 +37,10 @@ The workflow makes the local source handoff explicit:
 - keep metadata with the generated source
 
 The insight is not merely "copy files." The insight is that local source flow can be made reviewable using the package manager's native model.
+
+For `gopickle`, the important idea is effective `GOPROXY` use: a team can expose local Go libraries as proxy-shaped module artifacts, keep consumer projects on normal `go.mod` and import behavior, and avoid noisy `vendor/` folders or fragile local path assumptions.
+
+For `rustpickle`, the same `*pickle` idea maps to Cargo-native source handoffs: a team can expose local crates through generated Cargo source or patch configuration while keeping the consumer crate's dependency model familiar.
 
 ### 2. Execution Handoff
 

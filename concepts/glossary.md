@@ -21,7 +21,7 @@ Reviewable does not mean automatically safe. It means visible enough to inspect 
 
 ## Source Handoff
 
-A source handoff passes source files, dependency content, or local repository artifacts to another project, tool, reviewer, or AI agent.
+A source handoff passes source files, dependency content, or local repository artifacts to another project, team, reviewer, or tool.
 
 Source handoffs answer:
 

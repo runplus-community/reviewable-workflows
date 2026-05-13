@@ -1,6 +1,6 @@
 # Do Not Bundle What You Cannot Inspect
 
-Source handoffs should make included files, dependency content, generated metadata, and consumption configuration visible before another project, tool, reviewer, or AI agent consumes them.
+Source handoffs should make included files, dependency content, generated metadata, and consumption configuration visible before another project, team, reviewer, or tool consumes them.
 
 This principle applies to local source snapshots, dependency handoffs, packaging outputs, extraction workflows, and language-native source transfer mechanisms.
 

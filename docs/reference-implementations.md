@@ -1,6 +1,6 @@
 # Reference Implementations
 
-Reviewable Workflows is the spec layer. The supporting repos are reference implementations of Reviewable Workflow Handoffs.
+Reviewable Workflow Handoffs is the spec layer. The supporting repos are reference implementations of Reviewable Workflow Handoffs.
 
 For the complete 4 + 1 repo map, see [Project Map](project-map.md).
 
@@ -42,6 +42,8 @@ The initial reference tools show two distinct workflow families:
 
 - `gopickle` and `rustpickle` make source handoffs reviewable by using language-native local repository mechanisms: file-backed `GOPROXY` for Go and Cargo directory or patch configuration for Rust.
 - `goshbuild` and `rushbuild` make execution handoffs reviewable by preserving source inside a runner, verifying the payload, rebuilding locally, and caching by source and toolchain identity.
+
+The `*pickle` family is specifically about practical local library distribution across projects and teams. It should make native dependency flows more effective and inspectable, not replace them with a new package manager.
 
 ## Linking Rule
 
