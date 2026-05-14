@@ -72,7 +72,6 @@ Specs:
 - [Credible Claims](concepts/credible-claims.md)
 - [Project Map](docs/project-map.md)
 - [Examples](examples/README.md)
-- [Review Plan](docs/review-plan.md)
 
 ## Principles
 
