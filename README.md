@@ -71,6 +71,7 @@ Specs:
 - [Threat Model](concepts/threat-model.md)
 - [Credible Claims](concepts/credible-claims.md)
 - [Project Map](docs/project-map.md)
+- [Examples](examples/README.md)
 
 ## Principles
 
@@ -83,6 +84,12 @@ Specs:
 
 - [Case studies index](case-studies/README.md)
 - [Axios 2026 npm Compromise](case-studies/axios-2026-npm-compromise.md)
+
+## Community
+
+- [Contributing](CONTRIBUTING.md)
+- [Code of Conduct](CODE_OF_CONDUCT.md)
+- [Security Policy](SECURITY.md)
 
 ## Repo Boundary
 
