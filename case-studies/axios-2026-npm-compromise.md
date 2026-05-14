@@ -169,6 +169,40 @@ Reviewable Workflow Handoffs would not automatically stop:
 
 This is a visibility and reviewability model, not a malware prevention guarantee.
 
+## Self-Critique And Limits
+
+This case study is useful only if it stays skeptical.
+
+Strengths:
+
+- The dangerous behavior happened during dependency installation, before application runtime.
+- The malicious change was small but high impact: a dependency and lifecycle-script path mattered more than broad application source changes.
+- The incident crosses both source handoff and execution handoff boundaries.
+- It shows that the Reviewable Workflow Handoffs vocabulary can apply beyond the current Go and Rust reference tools.
+
+Limits:
+
+- Reviewable Workflow Handoffs would not solve maintainer identity, token security, account takeover, or registry authorization.
+- Visibility does not ensure review; users and CI systems may still proceed automatically.
+- Too much review friction can become noise, especially in large dependency graphs.
+- Attackers can hide malicious behavior inside normal-looking source, minified bundles, obfuscated code, or legitimate-looking scripts.
+- Some details depend on third-party reporting, so this case study should avoid over-specific attribution claims where public sources disagree.
+- npm already has relevant controls such as lockfiles, `ignore-scripts`, provenance, trusted publishing, dependency scanning, malware scanning, registry takedowns, and CI hardening.
+
+The useful conclusion is not "review everything manually." The useful requirement is narrower:
+
+> Expose high-risk handoff changes before execution or consumption, and make them available to reviewers, package managers, registries, and CI policy.
+
+For npm, high-risk handoff changes include:
+
+- new lifecycle scripts
+- new install-time network behavior
+- new dependencies with lifecycle scripts
+- dependencies that are not imported by runtime code
+- missing provenance on a package that usually has it
+- package tarball contents that do not correspond to a source tag
+- dependency updates that cross a trust boundary without a lockfile or review gate
+
 ## Potential npm-Focused Requirements
 
 ### Package Maintainers
@@ -202,6 +236,127 @@ CI systems could support:
 - fail-on-missing-provenance policy for selected packages
 - package tarball extraction and scanning before install scripts run
 - separate review step for dependency graph changes
+
+## Exploratory npm Spec Sketch
+
+This sketch translates the Axios case study into possible npm-focused Reviewable Workflow Handoffs specs.
+
+It is not a proposal for a new package manager. It is a visibility layer for package contents, dependency metadata, lifecycle scripts, provenance, and install behavior.
+
+### `NPM-SOURCE-HANDOFF-001`
+
+Purpose:
+
+Make npm package contents and dependency changes reviewable before a project consumes a package version.
+
+Review surface:
+
+- package name and version
+- package tarball digest
+- included files manifest
+- dependency diff from previous version
+- lifecycle script inventory
+- source repository URL
+- source commit, tag, or release link when available
+- provenance or trusted-publishing status when available
+
+Non-goal:
+
+This does not prove that package contents are safe.
+
+### `NPM-EXECUTION-HANDOFF-001`
+
+Purpose:
+
+Make install-time execution behavior reviewable before lifecycle scripts run locally or in CI.
+
+Review surface:
+
+- direct lifecycle scripts
+- transitive lifecycle scripts
+- commands that would run during install
+- package that owns each script
+- new scripts compared with the previous lockfile or dependency state
+- declared network access, if available
+- policy decision: allow, warn, block, or require manual review
+
+Non-goal:
+
+This does not guarantee safe execution.
+
+### `PACKAGE-REGISTRY-HANDOFF-001`
+
+Purpose:
+
+Make registry-to-consumer handoffs reviewable across package ecosystems.
+
+Review surface:
+
+- package identity
+- artifact digest
+- source link
+- provenance metadata
+- publish actor or automation identity where available
+- package-content diff
+- dependency diff
+- install-time behavior summary
+
+Non-goal:
+
+This does not replace registry security, maintainer account protection, signing, provenance, malware scanning, or dependency review.
+
+### Possible User Flows
+
+Developer install preview:
+
+```text
+package manager resolves dependency update
+        |
+        v
+handoff manifest is generated
+        |
+        v
+developer reviews package diff and lifecycle scripts
+        |
+        v
+install proceeds only after policy allows it
+```
+
+CI gate:
+
+```text
+pull request changes lockfile
+        |
+        v
+CI generates handoff review
+        |
+        v
+new lifecycle scripts or missing provenance are flagged
+        |
+        v
+maintainer approves, rejects, or requests investigation
+```
+
+Registry view:
+
+```text
+new package version is published
+        |
+        v
+registry shows source link, provenance status, tarball diff, dependency diff, lifecycle scripts
+        |
+        v
+consumer sees review surface before install
+```
+
+Open questions:
+
+- Should lifecycle scripts be disabled by default in high-risk contexts?
+- Should registries expose package-content diffs as first-class metadata?
+- Should CI systems require explicit approval for new lifecycle scripts?
+- How should package managers represent source-to-registry mismatch?
+- Can handoff manifests be standardized across npm, PyPI, crates.io, and Go modules?
+- What is the minimum useful metadata that does not create too much ecosystem friction?
 
 ## Relationship To Existing Supply-Chain Practices
 
